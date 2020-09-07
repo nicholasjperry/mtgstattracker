@@ -16,16 +16,13 @@ class RegisterScreen extends Component {
             confirmpassword: '',
             agree: false
         };
-
-    }
+    };
 
     render() {
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     <Text style={styles.titleText}>Register</Text>
-
-                    {/* First/Last Names */}
                     <Input 
                         inputStyle={{color: 'white'}}
                         placeholder="First Name"
@@ -38,8 +35,6 @@ class RegisterScreen extends Component {
                         onChangeText={(lastname) => this.setState({lastname})}
                         value={this.state.lastname}
                     />
-
-                    {/* Username/Password */}
                     <Input 
                         inputStyle={{color: 'white'}}
                         placeholder="Username or Email"
@@ -64,8 +59,6 @@ class RegisterScreen extends Component {
                         value={this.state.confirmpassword}
                         leftIcon={{ type: 'font-awesome', name: 'lock', color: 'white', marginRight: 10 }}
                         />
-
-                    {/* Checkbox Container */}
                     <View style={styles.checkboxContainer}>
                         <CheckBox
                             checked={this.state.agree}
@@ -74,26 +67,18 @@ class RegisterScreen extends Component {
                         />
                         <Text style={{color: 'white', marginTop: 15, marginLeft: -5}}>I agree to the Terms of Services and Privacy Policy</Text>
                     </View>
-
-                    {/* Register Button */}
                     <TouchableOpacity 
                         style={styles.button} 
                         title="Register" 
                         type="submit">
                         <Text style={styles.buttonText}>Register</Text>
                     </TouchableOpacity>
-
-                    {/* Break Text */}
                     <Text style={{textAlign: 'center', color: 'grey', marginTop: 20}}>OR use an account from one of the following:</Text>
-
-                    {/* Buttons Container */}
                     <View style={styles.buttonsContainer}>
-                        {/* Twitter Button */}
                         <TouchableOpacity style={styles.twitterButton}>
                             <FontAwesome name="twitter" color="white" style={{marginRight: 5}}/>
                             <Text style={{color: 'white'}}>Twitter</Text>
                         </TouchableOpacity>
-                        {/* Facebook Button */}
                         <TouchableOpacity style={styles.facebookButton}>
                             <FontAwesome name="facebook-square" color="white" style={{marginRight: 5}}/>
                             <Text style={{color: 'white'}}>Facebook</Text>
@@ -108,8 +93,8 @@ class RegisterScreen extends Component {
                 </ScrollView>
             </SafeAreaView>
         );
-    }
-}
+    };
+};
 
 const styles = StyleSheet.create({
     container: {

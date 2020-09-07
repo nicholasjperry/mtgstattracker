@@ -1,32 +1,42 @@
 import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity, Text, Linking } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity, Text, Linking, AsyncStorage, Button } from 'react-native';
 import { Input, CheckBox } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 
-class LoginScreen extends Component {
+// const userInfo = {username: 'admin', password: 'password'};
 
+class LoginScreen extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             username: '',
-            password: '',
+            password:'',
             remember: false
         };
+    };
 
-    }
+    // _login = async() => {
+    //     if (userInfo.username === this.state.username && userInfo.password === this.state.password) {
+    //         // alert('Logged In');
+    //         await AsyncStorage.setItem('isLoggedIn', '1');
+    //         this.props.navigation.navigate("Home");
+    //     } else {
+    //         alert('Username or Password is incorrect.');
+    //     }
+    // }
 
     render() {
+
+        const { navigation } = this.props;
+
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     <Text style={styles.titleText}>Login</Text>
                     <Text style={styles.fillerText}>Hi there! Nice to see you again.</Text>
-
-                    {/* Username/Password */}
                     <Input 
                         inputStyle={{color: 'white'}}
-                        placeholder="Username or Email"
+                        placeholder="Username"
                         onChangeText={(username) => this.setState({username})}
                         value={this.state.username}
                         keyboardType="email-address"
@@ -40,8 +50,6 @@ class LoginScreen extends Component {
                         value={this.state.password}
                         leftIcon={{ type: 'font-awesome', name: 'lock', color: 'white', marginRight: 10 }}
                     />
-
-                    {/* Remember Me  */}
                     <CheckBox 
                         title="Remember Me"
                         checked={this.state.remember}
@@ -50,23 +58,21 @@ class LoginScreen extends Component {
                         textStyle={{color: 'white'}}
                         checkedColor="crimson"
                     />
-
-                    {/* Login Button */}
-                    <TouchableOpacity style={styles.loginButton} title="Login" type="submit">
+                    <TouchableOpacity 
+                        style={styles.loginButton} 
+                        title="Login" type="submit" 
+                        onPress={() => navigation.navigation("Home")}
+                        >
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
-
-                    {/* Break Text */}
-                    <Text style={{textAlign: 'center', color: 'grey', marginTop: 20}}>OR use an account from one of the following:</Text>
-
-                    {/* Buttons Container */}
+                    <Text style={{textAlign: 'center', color: 'grey', marginTop: 20}}>
+                        OR use an account from one of the following:
+                    </Text>
                     <View style={styles.buttonsContainer}>
-                        {/* Twitter Button */}
                         <TouchableOpacity style={styles.twitterButton}>
                             <FontAwesome name="twitter" color="white" style={{marginRight: 5}}/>
                             <Text style={{color: 'white'}}>Twitter</Text>
                         </TouchableOpacity>
-                        {/* Facebook Button */}
                         <TouchableOpacity style={styles.facebookButton}>
                             <FontAwesome name="facebook-square" color="white" style={{marginRight: 5}}/>
                             <Text style={{color: 'white'}}>Facebook</Text>
@@ -78,8 +84,6 @@ class LoginScreen extends Component {
                         <Text style={{color: 'grey'}}>Google</Text>
                         </TouchableOpacity>
                     </View>
-
-                    {/* Misc Links */}
                     <View style={styles.linkContainer}>
                         <TouchableOpacity style={{marginTop: 75}} onPress={() => Linking.openURL('#')}>
                             <Text style={{color: 'white'}}>
@@ -95,8 +99,8 @@ class LoginScreen extends Component {
                 </ScrollView>
             </SafeAreaView>
         );
-    }
-}
+    };
+};
 
 const styles = StyleSheet.create({
     container: {

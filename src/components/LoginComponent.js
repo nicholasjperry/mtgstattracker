@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity, Text, Linking, AsyncStorage, Button } from 'react-native';
+import React, { Component, useNavigation } from 'react';
+import { StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity, Text, Linking } from 'react-native';
 import { Input, CheckBox } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
-
-// const userInfo = {username: 'admin', password: 'password'};
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -25,9 +23,34 @@ class LoginScreen extends Component {
     //     }
     // }
 
-    render() {
+    handleUsernameChange = username => {
+        this.setState({ username })
+    }
 
-        const { navigation } = this.props;
+    handlePasswordChange = password => {
+        this.setState({ password })
+    }
+
+    onLogin() {
+        this.props.navigation.navigate("Home", {
+            screen: "HomeScreen",
+        })
+    }
+
+    // storeData = async () => {
+    //     const { username, password } = this.state;
+    //     try {
+    //         if ( username.length > 0 && password.length > 0) {
+    //             // await AsyncStorage.setItem("userToken", "1")
+    //             this.props.navigation.navigate("Home");
+    //         }
+    //     } catch (error) {
+    //         alert(error)
+    //     }
+    // }
+
+    render() {
+        const { username, password } = this.state;
 
         return (
             <SafeAreaView style={styles.container}>
@@ -36,18 +59,19 @@ class LoginScreen extends Component {
                     <Text style={styles.fillerText}>Hi there! Nice to see you again.</Text>
                     <Input 
                         inputStyle={{color: 'white'}}
-                        placeholder="Username"
-                        onChangeText={(username) => this.setState({username})}
-                        value={this.state.username}
+                        placeholder="Enter username"
+                        onChangeText={this.handleUsernameChange}
+                        value={username}
                         keyboardType="email-address"
+                        autoCapitalize="none"
                         leftIcon={{ type: 'font-awesome', name: 'user-circle-o', color: 'white', marginRight: 10 }}
                     />
                     <Input
                         inputStyle={{color: 'white'}}
                         placeholder="Password"
                         secureTextEntry
-                        onChangeText={(password) => this.setState({password})}
-                        value={this.state.password}
+                        onChangeText={this.handlePasswordChange}
+                        value={password}
                         leftIcon={{ type: 'font-awesome', name: 'lock', color: 'white', marginRight: 10 }}
                     />
                     <CheckBox 
@@ -61,7 +85,7 @@ class LoginScreen extends Component {
                     <TouchableOpacity 
                         style={styles.loginButton} 
                         title="Login" type="submit" 
-                        onPress={() => navigation.navigation("Home")}
+                        onPress={this.onLogin.bind(this)}
                         >
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>

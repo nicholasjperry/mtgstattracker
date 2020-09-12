@@ -1,8 +1,10 @@
 import React from 'react';
-import Main from './src/components/MainComponent';
+import Navigation from './src/components/NavigationComponent';
 
-export default () => {
-    return (
-        <Main /> 
+const App = () => {
+    return(
+        <Navigation />
     );
 };
+
+export default App;

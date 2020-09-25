@@ -1,57 +1,57 @@
-import React, { Component, useNavigation } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity, Text, Linking } from 'react-native';
 import { Input, CheckBox } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password:'',
+            username: "",
+            password: "",
             remember: false
         };
+        this.getData();
     };
-
-    // _login = async() => {
-    //     if (userInfo.username === this.state.username && userInfo.password === this.state.password) {
-    //         // alert('Logged In');
-    //         await AsyncStorage.setItem('isLoggedIn', '1');
-    //         this.props.navigation.navigate("Home");
-    //     } else {
-    //         alert('Username or Password is incorrect.');
-    //     }
-    // }
 
     handleUsernameChange = username => {
         this.setState({ username })
-    }
+    };
 
     handlePasswordChange = password => {
         this.setState({ password })
-    }
+    };
 
-    onLogin() {
-        this.props.navigation.navigate("Home", {
-            screen: "HomeScreen",
-        })
-    }
+    onLogin = async () => {
+        try {
+            await AsyncStorage.setItem("userprofile", JSON.stringify(
+                { username: this.state.username, password: this.state.password }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
-    // storeData = async () => {
-    //     const { username, password } = this.state;
-    //     try {
-    //         if ( username.length > 0 && password.length > 0) {
-    //             // await AsyncStorage.setItem("userToken", "1")
-    //             this.props.navigation.navigate("Home");
-    //         }
-    //     } catch (error) {
-    //         alert(error)
-    //     }
-    // }
+    getData = async () => {
+        try { 
+            const userprofile = await AsyncStorage.getItem("userprofile");
+            const userProfile = JSON.parse(userprofile);
+            if (userProfile !== null) {
+                this.setState({ ...userProfile })
+            }
+            if (username !== null) {
+                this.setState({ username })
+            }
+            if (password !== null) {
+            this.setState({ password })
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     render() {
-        const { username, password } = this.state;
-
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView>
@@ -61,9 +61,10 @@ class LoginScreen extends Component {
                         inputStyle={{color: 'white'}}
                         placeholder="Enter username"
                         onChangeText={this.handleUsernameChange}
-                        value={username}
+                        value={this.state.username}
                         keyboardType="email-address"
                         autoCapitalize="none"
+                        returnKeyType="next"
                         leftIcon={{ type: 'font-awesome', name: 'user-circle-o', color: 'white', marginRight: 10 }}
                     />
                     <Input
@@ -71,7 +72,8 @@ class LoginScreen extends Component {
                         placeholder="Password"
                         secureTextEntry
                         onChangeText={this.handlePasswordChange}
-                        value={password}
+                        value={this.state.password}
+                        autoCapitalize="none"
                         leftIcon={{ type: 'font-awesome', name: 'lock', color: 'white', marginRight: 10 }}
                     />
                     <CheckBox 
@@ -85,7 +87,7 @@ class LoginScreen extends Component {
                     <TouchableOpacity 
                         style={styles.loginButton} 
                         title="Login" type="submit" 
-                        onPress={this.onLogin.bind(this)}
+                        onPress={this.onLogin}
                         >
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { StyleSheet, View, Text, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 class HomeScreen extends Component {
@@ -8,7 +8,7 @@ class HomeScreen extends Component {
         this.state = {
             image: null
         };
-    }
+    };
 
     handleChoosePhoto = () => {
         const options = {
@@ -21,12 +21,12 @@ class HomeScreen extends Component {
                 this.setState({ image: response });
             }
         });
-    }
+    };
 
     render() {
         const { image } = this.state;
         return(
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.container}>
                 {image && (
                     <Image
                         source={{ uri: image.uri }}
@@ -37,7 +37,18 @@ class HomeScreen extends Component {
                 />
             </View>
         );
+    };
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'white'
+    },
+    imageButton: {
+
     }
-}
+});
 
 export default HomeScreen;

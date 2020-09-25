@@ -7,20 +7,55 @@ import LoginScreen from './LoginComponent';
 import RegisterScreen from './RegisterComponent';
 import HomeScreen from './HomeComponent';
 import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import AsyncStorage from '@react-native-community/async-storage';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+const RootStackScreen = () => {
+    return <RootStack.Navigator initialRouteName="Welcome">
+        <RootStack.Screen name="Welcome" component={WelcomeScreen} />
+        <RootStack.Screen name="Login" component={LoginScreen} />
+        <RootStack.Screen name="Register" component={RegisterScreen} />
+    </RootStack.Navigator>
+};
+
+const AppStack = createMaterialBottomTabNavigator();
+const AppStackScreen = () => {
+    return <AppStack.Navigator initialRouteName="Home">
+        <AppStack.Screen 
+            name="Home" 
+            component={HomeScreen}
+            options={{title: "Home" }}
+         />
+    </AppStack.Navigator>
+}
 
 class Navigation extends Component {
-    
+    constructor(props) {
+        super(props);
+        this.state = {
+            logged: false,
+        };
+        this.loginStatusCheck();
+    };
+
+    loginStatusCheck = async () => {
+        try {
+            const userToken = await AsyncStorage.getItem("userprofile");
+            if(userToken !==null) {
+                this.setState({ logged: true })
+            } else {
+                this.setState({ logged: false })
+            }
+        }   catch (err) {
+                console.log(err);
+        }
+    };
+
     render() {
         return(
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Welcome">
-                    <Stack.Screen name="Welcome" component={WelcomeScreen} />
-                    <Stack.Screen name="Login" component={LoginScreen} />
-                    <Stack.Screen name="Register" component={RegisterScreen} />
-                    <Stack.Screen name="Home" component={HomeScreen} />
-                </Stack.Navigator>
+                {this.state.logged ? <RootStackScreen /> : <AppStackScreen />}
             </NavigationContainer>
         );
     };

@@ -19,8 +19,8 @@
 
   1. Before being able to run this project locally on your machine, you must first have Node.js and the Expo CLI installed.  You will also need to have Android Studio and use its AVD manager to setup an Android emulator, a.k.a. an Android Virtual Device.    
   2. Once the aforementioned step has been completed, you can proceed to clone the repo into a local directory using: ```git clone https://github.com/nicholasjperry/mtgstattracker.git```.
-  3. After you have cloned the remote repository to this local directory, install the required dependencies via: ```npm install```.
-  4. Fire up the Android emulator application on your desktop and finally run ```expo start```.  This will compile the project and then start serving the project through Expo at the URL ```exp://<Your Computer's IP address>:19000```.  It will also automatically open a browser tab pointed to https://localhost:19002, which is the Expo DevTools.  If you don't see it, go to https://localhost:19002 in your web browser.
+  3. After you have cloned the remote repository to your local directory, install the required dependencies via: ```npm install```.
+  4. Fire up the Android emulator application on your desktop and finally run ```expo start``` in your project directory.  This will compile the project and then start serving the project through Expo at the URL ```exp://<Your Computer's IP address>:19000```.  It will also automatically open a browser tab pointed to https://localhost:19002, which is the Expo DevTools.  If you don't see it, go to https://localhost:19002 in your web browser.
 
 ## License
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, Button } from 'react-native';
+import { StyleSheet, View, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 class HomeScreen extends Component {
@@ -18,13 +18,13 @@ class HomeScreen extends Component {
         ImagePicker.launchImageLibrary(options, response => {
             console.log("response", response);
             if (response.uri) {
-                this.setState({ image: response });
+                setImage({ image: response });
             }
         });
     };
-
-    render() {
+    render(){
         const { image } = this.state;
+
         return(
             <View style={styles.container}>
                 {image && (

@@ -15,33 +15,33 @@
   * Games List Component: This provides a player group to view a history of games played in the form of a table with 5 columns.  In column one, is the date and time when the game was played; column two is designated for the name of one player; column three is for the name of their opponent; column four lists both the name of the victor of the game and their ending life total; and column five lists the types/names of decks that were used.
   * Leaderboard Component: This screen displays a simple table with three columns, in which column one shows the player's name; column two is the amount of wins that player has logged; and column three is the amount of losses that player has accumulated.
 
-  ## Installation and Usage
+## Installation and Usage
 
-    1. Before being able to run this project locally on your machine, you must first have Node.js and the Expo CLI installed.  You will also need to have Android Studio and use its AVD manager to setup an Android emulator, a.k.a. an Android Virtual Device.    
-    2. Once the aforementioned step has been completed, you can proceed to clone the repo into a local directory using: ```git clone https://github.com/nicholasjperry/mtgstattracker.git```.
-    3. After you have cloned the remote repository to this local directory, install the required dependencies via: ```npm install```.
-    4. Fire up the Android emulator application on your desktop and finally run ```expo start```.  This will compile the project and then start serving the project through Expo at the URL ```exp://<Your Computer's IP address>:19000```.  It will also automatically open a browser tab pointed to https://localhost:19002, which is the Expo DevTools.  If you don't see it, go to https://localhost:19002 in your web browser.
+  1. Before being able to run this project locally on your machine, you must first have Node.js and the Expo CLI installed.  You will also need to have Android Studio and use its AVD manager to setup an Android emulator, a.k.a. an Android Virtual Device.    
+  2. Once the aforementioned step has been completed, you can proceed to clone the repo into a local directory using: ```git clone https://github.com/nicholasjperry/mtgstattracker.git```.
+  3. After you have cloned the remote repository to this local directory, install the required dependencies via: ```npm install```.
+  4. Fire up the Android emulator application on your desktop and finally run ```expo start```.  This will compile the project and then start serving the project through Expo at the URL ```exp://<Your Computer's IP address>:19000```.  It will also automatically open a browser tab pointed to https://localhost:19002, which is the Expo DevTools.  If you don't see it, go to https://localhost:19002 in your web browser.
 
-  ## License
+## License
 
-    MIT License
+MIT License
 
-    Copyright (c) [2022] [Nicholas Perry]
+Copyright (c) [2022] [Nicholas Perry]
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy  
-    of this software and associated documentation files (the "Software"), to deal  
-    in the Software without restriction, including without limitation the rights  
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
-    copies of the Software, and to permit persons to whom the Software is  
-    furnished to do so, subject to the following conditions:  
+Permission is hereby granted, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to deal  
+in the Software without restriction, including without limitation the rights  
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
+copies of the Software, and to permit persons to whom the Software is  
+furnished to do so, subject to the following conditions:  
 
-    The above copyright notice and this permission notice shall be included in all  
-    copies or substantial portions of the Software.  
+The above copyright notice and this permission notice shall be included in all  
+copies or substantial portions of the Software.  
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
-    SOFTWARE.  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
+SOFTWARE.  
